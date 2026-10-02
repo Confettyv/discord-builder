@@ -1,0 +1,59 @@
+{
+  "key": "gaming",
+  "name": "Игровое сообщество",
+  "summary": "Клан или игровой сервер: поиск тиммейтов, общение, голосовые на катки",
+  "roles": [
+    { "key": "owner", "name": "Основатель", "color": "#e67e22", "hoist": true, "perms": "admin" },
+    { "key": "staff", "name": "Администратор", "color": "#e74c3c", "hoist": true, "perms": "admin" },
+    { "key": "mod", "name": "Модератор", "color": "#3498db", "hoist": true, "perms": "moderator" },
+    { "key": "officer", "name": "Офицер клана", "color": "#9b59b6", "hoist": true, "perms": "member" },
+    { "key": "member", "name": "Участник", "color": "#2ecc71", "hoist": false, "perms": "member" },
+    { "key": "newbie", "name": "Новичок", "color": null, "hoist": false, "perms": "newbie" }
+  ],
+  "categories": [
+    {
+      "name": "ИНФОРМАЦИЯ",
+      "channels": [
+        { "name": "правила", "type": "text", "access": "read_only", "topic": "Правила сервера. Нарушение — предупреждение или бан" },
+        { "name": "объявления", "type": "announcement", "access": "read_only", "topic": "Новости клана и анонсы событий" },
+        { "name": "состав-клана", "type": "text", "access": "read_only", "topic": "Кто есть кто: состав и роли" }
+      ]
+    },
+    {
+      "name": "ОБЩЕНИЕ",
+      "channels": [
+        { "name": "общий-чат", "type": "text", "access": "members", "topic": "Основной чат сервера" },
+        { "name": "мемы", "type": "text", "access": "members", "topic": "Картинки и шутки" },
+        { "name": "скриншоты", "type": "text", "access": "members", "topic": "Хвастаемся игровыми моментами" }
+      ]
+    },
+    {
+      "name": "ИГРА",
+      "channels": [
+        { "name": "поиск-тиммейтов", "type": "text", "access": "members", "topic": "Ищете напарников — вам сюда" },
+        { "name": "вопросы-по-игре", "type": "forum", "access": "members", "topic": "Один вопрос — одна ветка", "fallback": "text" },
+        { "name": "гайды", "type": "text", "access": "members", "topic": "Полезные тактики и сборки" }
+      ]
+    },
+    {
+      "name": "ГОЛОСОВЫЕ",
+      "channels": [
+        { "name": "Общий", "type": "voice", "access": "members" },
+        { "name": "Катка 1", "type": "voice", "access": "members", "user_limit": 5 },
+        { "name": "Катка 2", "type": "voice", "access": "members", "user_limit": 5 },
+        { "name": "AFK", "type": "voice", "access": "members" }
+      ]
+    },
+    {
+      "name": "СЛУЖЕБНОЕ",
+      "channels": [
+        { "name": "чат-модерации", "type": "text", "access": "staff", "topic": "Обсуждение нарушений" },
+        { "name": "логи", "type": "text", "access": "staff", "topic": "Автоматические логи и алерты AutoMod" },
+        { "name": "тикеты", "type": "text", "access": "staff", "topic": "Архив закрытых обращений" }
+      ]
+    }
+  ],
+  "entry": { "channel": "вход", "grant_role": "member", "hidden_until_verified": true },
+  "tickets": { "channel": "создать-тикет", "staff_role": "mod", "kinds": ["Вопрос", "Жалоба на игрока", "Вступить в клан"] },
+  "automod": { "spam": true, "mention_limit": 5, "block_invites": true, "log_channel": "логи" }
+}

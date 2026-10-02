@@ -1,0 +1,57 @@
+{
+  "key": "team",
+  "name": "Рабочая команда",
+  "summary": "Проекты, задачи, созвоны, подрядчики с ограниченным доступом",
+  "roles": [
+    { "key": "owner", "name": "Руководитель", "color": "#e67e22", "hoist": true, "perms": "admin" },
+    { "key": "staff", "name": "Менеджер", "color": "#e74c3c", "hoist": true, "perms": "moderator" },
+    { "key": "mod", "name": "Тимлид", "color": "#3498db", "hoist": true, "perms": "moderator" },
+    { "key": "member", "name": "Сотрудник", "color": "#2ecc71", "hoist": true, "perms": "member" },
+    { "key": "regular", "name": "Подрядчик", "color": "#95a5a6", "hoist": true, "perms": "member" },
+    { "key": "newbie", "name": "Гость", "color": null, "hoist": false, "perms": "newbie" }
+  ],
+  "categories": [
+    {
+      "name": "ОБЩЕЕ",
+      "channels": [
+        { "name": "объявления", "type": "announcement", "access": "read_only", "topic": "Решения и новости, которые касаются всех" },
+        { "name": "обсуждение", "type": "text", "access": "members", "topic": "Рабочий чат" },
+        { "name": "полезные-ссылки", "type": "text", "access": "read_only", "topic": "Доступы, документация, инструменты" }
+      ]
+    },
+    {
+      "name": "ПРОЕКТЫ",
+      "channels": [
+        { "name": "задачи", "type": "forum", "access": "members", "topic": "Одна ветка — одна задача", "fallback": "text" },
+        { "name": "релизы", "type": "text", "access": "members", "topic": "Что выкатили и когда" },
+        { "name": "инциденты", "type": "text", "access": "members", "topic": "Что сломалось и как чинили" }
+      ]
+    },
+    {
+      "name": "РАБОТА",
+      "channels": [
+        { "name": "код-ревью", "type": "text", "access": "members", "topic": "Ссылки на пулл-реквесты" },
+        { "name": "деплой", "type": "text", "access": "members", "topic": "Канал для вебхуков CI и уведомлений о выкатке" },
+        { "name": "идеи", "type": "text", "access": "members", "topic": "Сырые предложения без обязательств" }
+      ]
+    },
+    {
+      "name": "ГОЛОСОВЫЕ",
+      "channels": [
+        { "name": "Стендап", "type": "voice", "access": "members" },
+        { "name": "Работаем молча", "type": "voice", "access": "members" },
+        { "name": "Переговорка", "type": "voice", "access": "members", "user_limit": 8 }
+      ]
+    },
+    {
+      "name": "СЛУЖЕБНОЕ",
+      "channels": [
+        { "name": "руководство", "type": "text", "access": "staff", "topic": "Закрытый чат руководителей" },
+        { "name": "логи", "type": "text", "access": "staff", "topic": "Автоматические логи и алерты AutoMod" }
+      ]
+    }
+  ],
+  "entry": { "channel": "вход", "grant_role": "member", "hidden_until_verified": false },
+  "tickets": { "channel": "создать-тикет", "staff_role": "staff", "kinds": ["Доступы", "Отпуск", "Личный вопрос"] },
+  "automod": { "spam": true, "mention_limit": 8, "block_invites": true, "log_channel": "логи" }
+}

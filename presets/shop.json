@@ -1,0 +1,56 @@
+{
+  "key": "shop",
+  "name": "Магазин или сервис",
+  "summary": "Витрина, приём заказов через тикеты, отзывы, поддержка",
+  "roles": [
+    { "key": "owner", "name": "Владелец", "color": "#f1c40f", "hoist": true, "perms": "admin" },
+    { "key": "staff", "name": "Администратор", "color": "#e74c3c", "hoist": true, "perms": "admin" },
+    { "key": "mod", "name": "Поддержка", "color": "#3498db", "hoist": true, "perms": "moderator" },
+    { "key": "regular", "name": "Постоянный клиент", "color": "#1abc9c", "hoist": true, "perms": "member" },
+    { "key": "member", "name": "Покупатель", "color": "#95a5a6", "hoist": false, "perms": "member" },
+    { "key": "newbie", "name": "Гость", "color": null, "hoist": false, "perms": "newbie" }
+  ],
+  "categories": [
+    {
+      "name": "ВИТРИНА",
+      "channels": [
+        { "name": "правила", "type": "text", "access": "read_only", "topic": "Правила магазина и условия сделки" },
+        { "name": "прайс", "type": "text", "access": "read_only", "topic": "Актуальные цены" },
+        { "name": "наличие", "type": "text", "access": "read_only", "topic": "Что есть в продаже прямо сейчас" },
+        { "name": "отзывы", "type": "text", "access": "members", "topic": "Отзывы покупателей. Писать только после сделки" }
+      ]
+    },
+    {
+      "name": "ПОКУПКА",
+      "channels": [
+        { "name": "как-заказать", "type": "text", "access": "read_only", "topic": "Пошагово: от вопроса до оплаты" },
+        { "name": "создать-тикет", "type": "text", "access": "read_only", "topic": "Нажмите кнопку — откроется личный канал с поддержкой" },
+        { "name": "гарантии", "type": "text", "access": "read_only", "topic": "Что делать, если что-то пошло не так" }
+      ]
+    },
+    {
+      "name": "ОБЩЕНИЕ",
+      "channels": [
+        { "name": "чат", "type": "text", "access": "members", "topic": "Свободное общение" },
+        { "name": "вопросы", "type": "text", "access": "members", "topic": "Общие вопросы не по конкретному заказу" }
+      ]
+    },
+    {
+      "name": "ГОЛОСОВЫЕ",
+      "channels": [
+        { "name": "Переговорная", "type": "voice", "access": "members", "user_limit": 4 }
+      ]
+    },
+    {
+      "name": "СЛУЖЕБНОЕ",
+      "channels": [
+        { "name": "команда", "type": "text", "access": "staff", "topic": "Внутренний чат" },
+        { "name": "логи", "type": "text", "access": "staff", "topic": "Автоматические логи и алерты AutoMod" },
+        { "name": "архив-тикетов", "type": "text", "access": "staff", "topic": "Стенограммы закрытых обращений" }
+      ]
+    }
+  ],
+  "entry": { "channel": "вход", "grant_role": "member", "hidden_until_verified": true },
+  "tickets": { "channel": "создать-тикет", "staff_role": "mod", "kinds": ["Купить", "Вопрос по заказу", "Проблема", "Возврат"] },
+  "automod": { "spam": true, "mention_limit": 4, "block_invites": true, "log_channel": "логи" }
+}

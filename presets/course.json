@@ -1,0 +1,60 @@
+{
+  "key": "course",
+  "name": "Обучение и курсы",
+  "summary": "Поток учеников, материалы, домашние задания, разбор ошибок",
+  "roles": [
+    { "key": "owner", "name": "Преподаватель", "color": "#e67e22", "hoist": true, "perms": "admin" },
+    { "key": "staff", "name": "Куратор", "color": "#e74c3c", "hoist": true, "perms": "moderator" },
+    { "key": "mod", "name": "Староста", "color": "#3498db", "hoist": true, "perms": "moderator" },
+    { "key": "regular", "name": "Выпускник", "color": "#9b59b6", "hoist": true, "perms": "member" },
+    { "key": "member", "name": "Ученик", "color": "#2ecc71", "hoist": true, "perms": "member" },
+    { "key": "newbie", "name": "Гость", "color": null, "hoist": false, "perms": "newbie" }
+  ],
+  "categories": [
+    {
+      "name": "СТАРТ",
+      "channels": [
+        { "name": "правила", "type": "text", "access": "read_only", "topic": "Как устроено обучение и что запрещено" },
+        { "name": "объявления", "type": "announcement", "access": "read_only", "topic": "Анонсы занятий и важные новости" },
+        { "name": "расписание", "type": "text", "access": "read_only", "topic": "Когда и что проходим" },
+        { "name": "с-чего-начать", "type": "text", "access": "read_only", "topic": "Первые шаги для новичка на потоке" }
+      ]
+    },
+    {
+      "name": "УЧЁБА",
+      "channels": [
+        { "name": "материалы", "type": "text", "access": "read_only", "topic": "Конспекты, записи, ссылки" },
+        { "name": "домашние-задания", "type": "forum", "access": "members", "topic": "Одна ветка — одно задание", "fallback": "text" },
+        { "name": "разбор-ошибок", "type": "text", "access": "members", "topic": "Типовые ошибки и их причины" },
+        { "name": "вопросы-преподавателю", "type": "text", "access": "members", "topic": "Спрашивайте здесь, ответим в течение дня" }
+      ]
+    },
+    {
+      "name": "ОБЩЕНИЕ",
+      "channels": [
+        { "name": "чат-потока", "type": "text", "access": "members", "topic": "Общение учеников" },
+        { "name": "успехи", "type": "text", "access": "members", "topic": "Хвастаемся результатами" },
+        { "name": "флудилка", "type": "text", "access": "members", "topic": "Всё не по теме" }
+      ]
+    },
+    {
+      "name": "ГОЛОСОВЫЕ",
+      "channels": [
+        { "name": "Лекция", "type": "voice", "access": "members" },
+        { "name": "Практика", "type": "voice", "access": "members" },
+        { "name": "Разговорная", "type": "voice", "access": "members" }
+      ]
+    },
+    {
+      "name": "СЛУЖЕБНОЕ",
+      "channels": [
+        { "name": "преподаватели", "type": "text", "access": "staff", "topic": "Внутренний чат команды" },
+        { "name": "логи", "type": "text", "access": "staff", "topic": "Автоматические логи и алерты AutoMod" },
+        { "name": "архив-тикетов", "type": "text", "access": "staff", "topic": "Стенограммы закрытых обращений" }
+      ]
+    }
+  ],
+  "entry": { "channel": "вход", "grant_role": "member", "hidden_until_verified": true },
+  "tickets": { "channel": "создать-тикет", "staff_role": "staff", "kinds": ["Вопрос по оплате", "Технические проблемы", "Личный вопрос"] },
+  "automod": { "spam": true, "mention_limit": 5, "block_invites": true, "log_channel": "логи" }
+}
